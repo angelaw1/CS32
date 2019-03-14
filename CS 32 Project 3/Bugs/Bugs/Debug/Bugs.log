@@ -1,0 +1,5 @@
+﻿  Actor.cpp
+c:\users\angela wu\documents\visual studio 2015\projects\bugs-skeleton-windows\bugs\bugs\actor.cpp(782): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\angela wu\documents\visual studio 2015\projects\bugs-skeleton-windows\bugs\bugs\actor.cpp(783): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Bugs.vcxproj -> C:\Users\Angela Wu\Documents\Visual Studio 2015\Projects\Bugs-skeleton-windows\Bugs\Debug\Bugs.exe
+  Bugs.vcxproj -> C:\Users\Angela Wu\Documents\Visual Studio 2015\Projects\Bugs-skeleton-windows\Bugs\Debug\Bugs.pdb (Full PDB)

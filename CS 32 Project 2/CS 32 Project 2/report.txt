@@ -1,0 +1,424 @@
+1.	Each linked list is initialized with no nodes and a head and tail pointer (nullpointer). The head pointer points to the top of the list and 
+	the tail points to the end of the list. Each node has a value of type ItemType and a previous and next pointer.
+
+2.	Copy constructors:
+	if size of list is 0
+		set head and tail pointer to null 
+	set first new node’s previous pointer to node
+	give new’s value old’s value
+	for every index of old list
+		appropriately assign new’s next pointer, value, preious pointer
+		increment tempNew
+		increment tempOld
+	set last node’s next pointer to null
+	set tail to last node
+
+	Operator=
+	if old is same as this
+		return this 
+	give new’s pevious and value nullpointer and old’s value
+	for every index of old list
+	    appropriately assign new’s next pointer, value, previous pointer 
+	set last node’s next pointer to null
+	set tail to last node
+
+	size
+	assign temp to head
+	create count
+	if  list is not empty
+		increment count
+	    as long as temp’s next is not null
+			increment count and temp 
+	return count
+
+	insert 2 parameters
+	create count
+	return false if pos not in range
+	create new node and set value
+	if list is empty
+		set previous, new, head, tail accordingly and return
+	if insert at start of list
+		set previous, next, old start’s previous, and head accordingly
+	if insert at end of list
+		set previous, next, old tail’s next, and tail accordingly
+	else find where to insert node
+	set next, previous, previous’s next, next’s previous accordingly
+
+	insert 1 parameter
+	create count
+	create pointer to head
+	if size is 0 or value is less than first value
+		call insert(0, value)
+	create new node and give value
+	find where to insert node using count
+	insert node at count
+	return count
+
+	erase
+	return false if pos not in range
+	if erase from top
+		if size is 1
+			delete  node and set head and tail accordingly
+			return true
+    set next’s previous, head accordingly and delete node
+    return true
+	find where to erase
+	if erase last node
+		set next’s previous, tail accordingly and delete node
+    return true
+	set previous’s next and next’s previous accordingly and delete node
+	return true
+
+	remove
+	create pointer to head and count
+	for every node
+		if node’s value equals to value
+			increment temp, erase node, increment count, decrement index
+		increment temp;
+	return count
+
+	get
+	return false if pos not in range
+	create pointer to head
+	find pos
+	set value to value at pos
+	return true
+
+	set
+	return false if pos not in range
+	create pointer to head
+	find pos
+	set pos’s value to value
+	return true
+
+	find
+	set p to -1
+	if empty list return p
+	create pointer to head
+	for every node
+		if node’s value equals value
+			set p to index and break
+	increment pointer
+	return p
+
+	swap
+	create temp pointers for head and tail
+	set head and tail to other’s head and tail
+	set other’s head and tail to temp pointers
+
+	subsequence
+	set index to -1
+	return index if seq2 is longer than seq1
+	for every node in seq1
+		while we don’t pass seq2’s last node
+			break if seq1’s value not equal seq2’s value
+			otherwise increment seq2
+		if reached end of seq2 set index to i and break
+	return index
+
+	interleave
+	create resultIndex and set to 0
+	create index and set t 0
+	erase all nodes in result
+	while resultIndex is not size of seq1 plus seq2
+		add seq1 at index if not reached seq1 yet
+		increment resultIndex
+		add seq2 at index if not reached seq2 yet
+		increment resultIndex
+		increment index
+
+3. ItemType value;
+	Sequence a;
+	assert(a.empty());					// standard case
+	assert(a.insert(0, "hello"));		// insert (2 parameters) in empty list
+	assert(a.size() == 1);
+	a.get(0, value);					// get value at top
+	assert(value == "hello");
+	assert(!a.insert(2, "aaaaa"));		// false case, not enough nodes
+	assert(a.insert(0, "aaaaa"));		// insert (2 parameters) at top
+	assert(a.size() == 2);
+	a.get(0, value);
+	assert(value == "aaaaa");
+	assert(a.insert(2, "b"));			// insert (2 parameters) at end of list
+	assert(a.size() == 3);
+	a.get(2, value);
+	assert(value == "b");
+	assert(a.insert("aaaa") == 0);		// insert (1 paramter) at top
+	assert(a.size() == 4);
+	a.get(0, value);
+	assert(value == "aaaa");
+	assert(a.insert("z") == 4);			// insert (1 parameter) at end
+	assert(a.size() == 5);
+	a.get(4, value);
+	assert(value == "z");
+	assert(a.insert("h") == 2);			// standard insert (1 parameter)
+	assert(a.size() == 6);
+	a.get(2, value);
+	assert(value == "h");
+	assert(a.insert("y") == 5);
+	assert(a.size() == 7);
+	a.get(5, value);
+	assert(value == "y");
+	assert(a.erase(3));					// standard erase
+	assert(a.size() == 6);
+	a.get(0, value);
+	assert(value == "aaaa");
+	a.get(1, value);
+	assert(value == "aaaaa");
+	a.get(2, value);
+	assert(value == "h");
+	a.get(3, value);
+	assert(value == "b");
+	a.get(4, value);
+	assert(value == "y");
+	a.get(5, value);
+	assert(value == "z");
+	assert(a.erase(0));					// erase at top
+	assert(a.size() == 5);
+	a.get(0, value);
+	assert(value == "aaaaa");
+	a.get(1, value);
+	assert(value == "h");
+	assert(a.erase(4));					// erase at end
+	assert(!a.erase(7));				// false case, not enough nodes
+	assert(a.size() == 4);
+	a.get(3, value);
+	assert(value == "y");
+	assert(a.insert("aaaa") == 0);
+	a.get(0, value);
+	assert(value == "aaaa");
+	a.get(1, value);
+	assert(value == "aaaaa");
+	assert(a.insert(a.size(), "aaaa"));
+	assert(a.size() == 6);
+	a.get(5, value);
+	assert(value == "aaaa");
+	assert(a.remove("aaaa") == 2);		// standard remove
+	assert(a.size() == 4);
+	a.get(0, value);
+	assert(value == "aaaaa");
+	a.get(1, value);
+	assert(value == "h");
+	a.get(2, value);
+	assert(value == "b");
+	a.get(3, value);
+	assert(value == "y");
+	assert(a.insert("b") == 1);
+	assert(a.insert(0, "b"));
+	assert(a.insert(a.size(), "b"));
+	assert(a.size() == 7);
+	assert(a.remove("b") == 4);
+	assert(a.size() == 3);
+	a.get(0, value);
+	assert(value == "aaaaa");
+	a.get(1, value);
+	assert(value == "h");
+	a.get(2, value);
+	assert(value == "y");
+	assert(a.remove("aaaaaaaaaaa") == 0);	// remove nothing
+	assert(a.set(0, "aaaa"));
+	assert(!a.set(-1, "dfs"));				// false case, negative pos
+	a.get(0, value);
+	assert(value == "aaaa");
+	assert(a.set(1, "f"));
+	a.get(1, value);
+	assert(value == "f");
+	assert(a.set(2, "yy"));
+	a.get(2, value);
+	assert(value == "yy");
+	assert(a.find("a") == -1);				// find nonexistent value
+	assert(a.find("yy") == 2);				// standard find
+	assert(a.find("aaaa") == 0);
+	assert(a.find("f") == 1);
+
+	Sequence b;
+	b.insert(b.size(), "ss");
+	b.insert(b.size(), "ww");
+	b.insert(b.size(), "qq");
+	b.insert(b.size(), "ll");
+	b.insert(b.size(), "aa");
+	a.swap(b);								// standard swap
+	assert(a.size() == 5);
+	assert(b.size() == 3);
+	a.get(0, value);
+	assert(value == "ss");
+	a.get(1, value);
+	assert(value == "ww");
+	a.get(2, value);
+	assert(value == "qq");
+	a.get(3, value);
+	assert(value == "ll");
+	a.get(4, value);
+	assert(value == "aa");
+	b.get(0, value);
+	assert(value == "aaaa");
+	b.get(1, value);
+	assert(value == "f");
+	b.get(2, value);
+	assert(value == "yy");
+
+	Sequence c = b;					// standard copy constructore
+	assert(c.size() == 3);
+	c.get(0, value);
+	assert(value == "aaaa");
+	c.get(1, value);
+	assert(value == "f");
+	c.get(2, value);
+	assert(value == "yy");
+
+	c = a;						// standard operator=
+	assert(c.size() == 5); 
+	c.get(0, value);
+	assert(value == "ss");
+	c.get(1, value);
+	assert(value == "ww");
+	c.get(2, value);
+	assert(value == "qq");
+	c.get(3, value);
+	assert(value == "ll");
+	c.get(4, value);
+	assert(value == "aa");
+	assert(c.size() == 5);
+
+	Sequence d;
+	d.insert(0, "qq");
+	d.insert(1, "ll");
+	d.insert(2, "aa");
+	assert(subsequence(c, d) == 2);		// subsequence at end
+
+	Sequence e;
+	assert(subsequence(c, e) == 0);		// subsequence with empty list
+	e.insert(0, "ss");
+	e.insert(1, "ww");
+	assert(subsequence(c, e) == 0);		// subsequence at beginning
+
+	Sequence f;
+	interleave(d, e, f);				// standard interleave
+	assert(f.size() == 5);
+	f.get(0, value);
+	assert(value == "qq");
+	f.get(1, value);
+	assert(value == "ss");
+	f.get(2, value);
+	assert(value == "ll");
+	f.get(3, value);
+	assert(value == "ww");
+	f.get(4, value);
+	assert(value == "aa");
+
+	Sequence g;
+	Sequence h;
+	interleave(g, h, f);			// interleave two empty lists
+	assert(f.size() == 0);
+	g.insert("a");
+	assert(g.erase(0));				// erase from list with size = 1
+	assert(g.size() == 0);
+	g.insert("a");
+	g.insert("a");
+	g.insert("a");
+	g.insert("a");
+	g.insert("a");
+	assert(g.remove("a") == 5);
+
+	Sequence i;
+	i.insert("a");
+	i.insert("b");
+	i.insert("c");
+	i.insert("d");
+	i.insert("e");
+	i.insert("f");
+	assert(i.size() == 6);
+	Sequence j;
+	Sequence k;
+	interleave(i, j, k);			// interleave with one empty list
+	assert(k.size() == 6);
+	k.get(0, value);
+	assert(value == "a");
+	k.get(1, value);
+	assert(value == "b");
+	k.get(2, value);
+	assert(value == "c");
+	k.get(3, value);
+	assert(value == "d");
+	k.get(4, value);
+	assert(value == "e");
+	k.get(5, value);
+	assert(value == "f");
+	interleave(i, i, j);				// interleave same list
+	assert(j.size() == 12);
+	j.get(0, value);
+	assert(value == "a");
+	j.get(1, value);
+	assert(value == "a");
+	j.get(2, value);
+	assert(value == "b");
+	j.get(3, value);
+	assert(value == "b");
+	j.get(4, value);
+	assert(value == "c");
+	j.get(5, value);
+	assert(value == "c");
+	j.get(6, value);
+	assert(value == "d");
+	j.get(7, value);
+	assert(value == "d");
+	j.get(8, value);
+	assert(value == "e");
+	j.get(9, value);
+	assert(value == "e");
+	j.get(10, value);
+	assert(value == "f");
+	j.get(11, value);
+	assert(value == "f");
+
+	Sequence l;
+	l.insert(0, "bob");
+	l.insert(1, "mary");
+	l.insert(2, "george");
+	l.insert(3, "bobby");
+	l.insert(4, "jacob");
+	Sequence m;
+	m.insert(0, "katie");
+	m.insert(1, "max");
+	m.insert(2, "david");
+	Sequence n;
+	interleave(l, m, n);
+	assert(n.size() == 8);
+	n.get(0, value);
+	assert(value == "bob");
+	n.get(1, value);
+	assert(value == "katie");
+	n.get(2, value);
+	assert(value == "mary");
+	n.get(3, value);
+	assert(value == "max");
+	n.get(4, value);
+	assert(value == "george");
+	n.get(5, value);
+	assert(value == "david");
+	n.get(6, value);
+	assert(value == "bobby");
+	n.get(7, value);
+	assert(value == "jacob");
+
+	Sequence o;
+	o.insert(0, "bob");
+	o.insert(1, "katie");
+	o.insert(2, "jacob");
+	o.insert(3, "david");
+	o.insert(4, "bob");
+	o.insert(5, "bob");
+	o.insert(6, "emily");
+	o.insert(7, "max");
+	o.insert(8, "lily");
+	o.insert(9, "frank");
+	Sequence p;
+	p.insert(0, "bob");
+	p.insert(1, "emily");
+	p.insert(2, "max");
+	assert(subsequence(o, p) == 5);				// standard subsequence
+	Sequence q;
+	p = q;
+	assert(p.size() == 0);						// operator=, assign empty list
+	
+	cout << "All tests passed" << endl;
