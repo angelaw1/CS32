@@ -1,0 +1,28 @@
+int countIncludes(const double a1[], int n1, const double a2[], int n2)
+{
+	int count = 0;
+	bool marked = false;
+	if (n2 == 0)
+		return 1;
+	if (n1 == 0)
+		return 0;
+	if (a1[0] != a2[0]) {
+		//if (n1 == 1)
+		//	return count; // return 0;
+		count += countIncludes(a1 + 1, n1 - 1, a2, n2);
+	}
+	if (a1[0] == a2[0]) {
+		//if (n1 == 1)
+		//	return 1; // return count;
+		marked = true;
+		//if (n2 == 1)
+		//	count += 1;
+		//else
+			count += countIncludes(a1 + 1, n1 - 1, a2 + 1, n2 - 1);
+	}
+	if (marked) {
+		count += countIncludes(a1 + 1, n1 - 1, a2, n2);
+		marked = false;
+	}
+	return count;
+}

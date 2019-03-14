@@ -1,0 +1,5 @@
+﻿  tree.cpp
+c:\users\angela wu\documents\visual studio 2015\projects\cs 32 homework 3\cs 32 homework 3\tree.cpp(114): warning C4101: 'firstLess': unreferenced local variable
+c:\users\angela wu\documents\visual studio 2015\projects\cs 32 homework 3\cs 32 homework 3\tree.cpp(113): warning C4101: 'firstNotGreater': unreferenced local variable
+  CS 32 Homework 3.vcxproj -> C:\Users\Angela Wu\documents\visual studio 2015\Projects\CS 32 Homework 3\Debug\CS 32 Homework 3.exe
+  CS 32 Homework 3.vcxproj -> C:\Users\Angela Wu\documents\visual studio 2015\Projects\CS 32 Homework 3\Debug\CS 32 Homework 3.pdb (Partial PDB)

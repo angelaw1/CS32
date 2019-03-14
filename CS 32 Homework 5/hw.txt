@@ -1,0 +1,120 @@
+1. 
+a.				50
+
+		20				60
+
+	10		40				70
+
+	    15	     30				      65    80
+		   25  35				   75
+
+b. in order: 10 15 20 25 30 35 40 50 60 65 70 75 80
+   pre order: 50 20 10 15 40 30 25 35 60 70 65 80 75 
+   post order: 15 10 25 35 30 40 20 65 75 80 70 60 50
+
+c. 				50
+
+		20				60
+
+	10		40				70
+
+	    15	     35				      65    80
+		   25  					   75	
+
+
+
+   				50
+
+		15				60
+
+	10		40				70
+
+	    	     35				      65    80
+		   25  					   75		
+
+
+2.
+a. struct node {
+	int value;
+	Node* left;
+	Node* right;
+	Node* parent;
+   }
+
+b. create new node
+    set value to new value
+   if m_root is null
+	set m_root to new node
+	set parent, left, right pointer to null
+	return
+
+   current = m_root;
+   parent = m_root;
+   while current is not nullptr
+	set parent to current
+   	if current's value is greater than new value
+		set current to current's left
+	else
+		set current to current's right
+   
+   if parent's value is greater than new value
+	set parent's left to new node
+	set right to null
+   else
+   	set parent's right to new node
+	set left to null
+   set new node's parent to parent
+
+3. 
+a. h.insert(3);
+   h.insert(6);
+   h.insert(2); 
+   h.insert(0);
+   h.insert(10);
+   h.insert(4);
+   int item;
+   h.remove(item);	// Removes the biggest item from the heap, and puts 				it in item
+   h.insert(9);
+   h.insert(8);
+   h.remove(item);
+
+					8
+
+			3				6
+
+		0		2		4		
+
+b. 8 3 6 0 2 4 
+
+c. 					6
+
+			3				4
+
+		0		2
+
+4.
+a. O(C + log(S))
+b. O(log(C) + S)
+c. O(log(C) + log(S))
+d. O(C + log(S))
+e. O(C + S)
+f. O(log(C) + S)
+g. O(C + Slog(S) + S)
+h. O(Clog(S))
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		

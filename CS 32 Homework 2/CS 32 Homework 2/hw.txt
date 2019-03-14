@@ -1,0 +1,53 @@
+2.  Given the algorithm, main function, and maze shown at the end of problem 1, what are the first 12 (r,c) coordinates popped off the stack by the algorithm?
+	(6, 4)
+	(6, 3)
+	(6, 5)
+	(7, 5)
+	(8, 5)
+	(8, 6)
+	(8, 7)
+	(8, 8)
+	(7, 8)
+	(6, 6)
+	(5, 4)
+	(4, 4)
+				"XXXXXXXXXX",
+                "X........X",
+                "XX.X.XXXXX",
+                "X..X.X...X",
+                "X..X*..X.X",
+                "XXXXPXXX.X",
+                "X.X****XXX",
+                "X..XX*XXPX",
+                "X...X****X",
+                "XXXXXXXXXX"		
+
+4.  Given the same main function and maze as are shown at the end of problem 1, what are the first 12 (r,c) coordinates popped from the queue in your queue-based algorithm?
+	How do the two algorithms differ from each other? (Hint: how and why do they visit cells in the maze in a different order?)
+	(6, 4)					"XXXXXXXXXX",				
+    (5, 4)					"X...*....X",				
+    (6, 5)					"XX.XPXXXXX",				
+    (6, 3)					"X..X*X...X",				
+    (4, 4)					"X..X**X.X",				
+    (6, 6)					"XXXX*XXX.X",				
+    (7, 5)					"X.X****XXX",				
+    (3, 4)					"X..XX*XX.X",				
+    (4, 5)					"X...X**..X",				
+    (8, 5)					"XXXXXXXXXX"				
+	(2, 4)
+	(8, 6)
+
+	The stack algorithm keeps going foward until it reaches a dead end and then
+	goes find another path until its at the ending coordinate or reaches another
+	dead end. The queue algorithm visits all the coordinates that are closest to 
+	it first. The difference is due to the fact that stack pops off the most 
+	recently pushed item and queue pops the oldest pushed item.
+	
+	
+	
+	
+	
+	
+	
+	
+	
