@@ -1,0 +1,208 @@
+1. Actor
+   I chose to defined a pure virtual function of the doSomething() function
+   in my base Actor class because all actors do something different each
+   tick. I defined a virtual function for my isDead() function, which returns whether
+   an actor is dead, because pebbles never die but everything else is able to die. I 
+   defined a virtual blocksInsects function because only pebbles block insects. I 
+   defined a virtual getBitten() function, which causes the actor that calls
+   it to be bitten, because not all actors are able too be bitten. I defined
+   a virtual getPoisoned() function, which poisons the actor that calls it,
+   because not all actors can be poisoned. I defined a virtual getStunned function,
+   which stuns the actor that calls it, because not all actors can be stunned.
+   I defined a getRandomDirection() function, which returns a random direction, in Actor class 
+   because the function doesn't depend on the type of actor that calls it.
+   I defined a getSTudentWorldPtr() function, which returns a pointer to the
+   studentworld class, in Actor class because all actors have the same pointer.
+   I defined a hasMoved() function, which returns whether the actor has moved
+   during that tick yet, in Actor class because it returns the same member 
+   variable for all actors. I defined a setMoveStatus(bool statement) function, which
+   sets the member variable m_hasMoved to statement, in Actor class because
+   it does the same thing regardless of the type of actor that calls it.
+   I defined a virtual canBeEaten() function, which returns whether or not
+   a specific type of variable can be eaten ot not, because not all actors
+   can be eaten. I defined a virtual canBeBitten() function, which returns 
+   whether or not the actor can be eaten, because not all actors can be eaten.
+   I defined a virtual alreadyStunned() function, which returns whether or
+   not the actor has been stunned on its current square yet, because not 
+   all actors can be stunned. I defined a virtual setStunnedTo(bool statement),
+   which sets the member variable m_stuned to statement, because not all actors can be
+   stunned. I defined a virtual canBeStunned() function, which returns whether or
+   not an actor can be stunned, because not all actors can be stunned. I defined a 
+   canBePoisoned function, which returns whether or not an actor can be poisoned,
+   in Actor class because it can just call the canBeStunned function for all actors. 
+   I defined a virtual getBite() function, which returns the fatality of
+   an actors bite, because not all actors can bite other actors. I defined a
+   virtual canBiteBack() function, which returns whether or not an actor
+   can bite back if another actor bites it, because not all actors can bite
+   back. I defined a virtual isPheromone(int colony) function, which returns 
+   whether or not an actor is a pheromone of the colony colony, because not all actors
+   are pheromones. I defined a virtual isEnemy(int colony) function, which
+   returns whether or not the actor that calls it is an enemy of the 
+   colony colony, because not all actors are enemies of a certain actor. I 
+   defined a virtual isDangerous(int colony) function, which returns whether
+   or not the actor that calls it is dangerous towards the colony colony,
+   because not all actors are considered dangerous to a specific colony.
+   I defined a virtual isAntHill(int colony) function, which returns whether
+   or not the actor that calls it is an Anthill of the colony colony, because
+   not all actors are anthills.
+
+   EnergyHolder
+   I defined a pure virtual doSomething() function because all the derived functions
+   of energyholder does something diffrent each tick. I defined a getEnergy function, 
+   which returns the amount of energy the actor has, because all derived classes just
+   return the member variable m_energy. I defined an updateENergy(int amt), which
+   adds or subtracts amt from m_energy, because all actors just adjust the member
+   variable m_energy. I defined an addFood(int amt) function, which adds amt to the
+   variable m_food, because m_food would be adjusted the same way for all actors. 
+   I defined a pickUpFood(int amt) function, which adds food to m_food of the
+   actor that calls it and decreases the same amount of food from the food 
+   object in that square, because it runs the same way regardless of the type
+   of actor that calls it. I defined a pickUpAndEatFood(int amt) function, which
+   adds amt to m_energy and decrements the same amt from the food in the 
+   same square, because it runs the same way regardless of type of actor
+   that calls it. I defined a virtual becomesFoodUponDead() function, which
+   returns whether or not the actor would form food once it does, because 
+   not all actors create food when they die. I defined a setDead() function, which
+   sets the actors energy to 0, because it does the same thing regardless
+   of the type of actor that calls it. I defined a getFood() function, which
+   returns the amount of food the actor is holding on to, because it just returns
+   the member variable m_food. 
+
+   Insect
+   I defined a pure virtual function doSomething() because all derived classes
+   do something different each tick. I defined a virtual changeTicksBy function, 
+   which changes the amount of ticks the actor has to sleep by diff, because not all insects 
+   sleep. I defined a isSleeping() function, which returns whether or not
+   the insect is sleeping, because it just returns whether or not m_ticksLeft is 0;
+   I defined a  getXYInFrontOfMe(int &x, int& y) function, which returns
+   the x and y value of the the spot in front of the insect. I defined moveForwardIfPossible()
+   function, which moves the insect to the spot in front of it if it is not
+   blocked by a pebble.
+
+   TriggerableActor
+   I defined a pure virtual doSomething() function because each triggerable actor does
+   something different each tick. 
+
+   Ant
+   I defined a simple interpreter function, which reads the bug program and
+   will be called in the doSomething function.
+
+   Grasshopper
+   I defined a setDistanceToWalkTo(distance), which sets the distance the
+   grasshopper walks for in its current direction to distance, because
+   only grasshoppers have this property. I defined getDistanceToWalk(), whic
+   returns the distance the grasshopper has to walk for in that direction.
+
+   StudentWorld
+   I defined a getEdibleAt(int x, int y) that returns a pointer to a food
+   at the location (x, y) or nullptr if there is no food. I defined an 
+   updateTickCount that just decrements the amount of ticks left in the 
+   game. I defined a removeDeadSimulationObjects() function that just
+   removes all the dead actors from the data structure. I defined a
+   isPebbleAtDestination(int x, int y) that returns whether or not there is
+   a pebble at the location. I defined a unitsOfFoodAt(int x, int y) that
+   returns whether or not there is food that the location. I defined a 
+   numberOfEnemies(int x, int y, int colony, Actor* biter) that returns
+   the number of enemies at the location. I defined a biteRandomEnemy(int x, int y, int colony, int sequence, Actor* biter, int bite)
+   function that bites a random enemy at the location and prompts it to
+   take the appropriate action, like bite back if it is an adult grasshopper.
+   I defined an updateAnts(int colony) that increments the number of ants
+   produced by the anthill of the colony.
+
+   Pseudocodes
+   StudentWorld::move() {
+         increment the ticks
+		 go through the data structure
+			go through the list in the data structure
+				if the actor is not dead and hasn't moved during this tick
+					tell it to doSomething
+					if the actor moved
+						remember that it has moved
+						add the actor to the list in the new location
+						delete the actor in the current location
+		remove all dead objects
+		remember all actors haven't moved yet
+		update the display text
+   }
+   StudentWorld::eatFoodAt(int x, int y, int amount) {
+		get a pointer to the food actor in the location
+		return 0 if there is none
+		set the amountEaten to the amount of food at the location
+		if the amountEaten is more than amount
+			set amountEaten to amount
+		decrease food by amountEaten
+		return amountEaten
+   }
+   StudentWorld::biteRandomEnemy(int x, int y, int colony, int sequence, Actor* biter, int bite) {
+		get total of enemies at the location
+		find the enemy that is sequence from the start of the list
+		once you find it bite the enemy with fatality bite
+		if the enemy bitten can bite back
+			have that enemy bite another enemy
+   }
+2. The adultgrasshoppers jump function is not implemented because it 
+   caused compiler errors and I didn't have time to fix it. 
+
+3. In one part of the spec, it said that we should never call the 
+   cleanUp() function directly but in another part it says that our 
+   studentWorld destructor can call the cleanUp() function so I just 
+   assumed that we can.
+
+4. Pebble
+   I ran the program that consisted of only pebbles and see if they stayed
+   the same for all 2000 ticks. Then I added a grasshopper and made sure
+   that the pebble blocked it everytime.
+
+   Food
+   I ran the program that consisted of a baby grasshopper and one piece of
+   food and made sure that it would eventually turn into an adult grasshopper.
+   I also printed out the amount of food on a square when a grasshopper dies
+   to checke if the amount of food was changed correctly or if a food 
+   actor was properly constructed.
+
+   Anthill
+   I used cassert to check whether everytime an anthill constructed a ant,
+   the energy is changed by -1500. I also used cassert to make sure that only 
+   5 ants were constructed at the beginning of the program. 
+   
+   Pheromone
+   I created my own bug file and made the ant only move and release 
+   pheromones only once during the program. I used cassert to make 
+   sure that the pheromones would die after 256 ticks. I also created
+   a bug file where an ant would stay on one spot and keep on releasing
+   phermones and I used cassert to make sure the amount of amount of 
+   pheromones add up correcly.
+
+   Waterpool
+   I ran a field where there was a water pool and a baby grasshopper and
+   made sure that the amount of ticks that it was sleeping for was 4. I
+   also tested it with an adult grasshopper and made sure that the grasshopper
+   would move again after 2 ticks.
+
+   Poison
+   I ran a field with a babygrasshopper and poison and used cassert to 
+   check if its energy was being decreased properly. I also used cassert
+   to make sure it dies after a certain amount of ticks. I also used 
+   cassert to make sure that if an adult grasshopper passed a poison
+   that its energy would only be decremented by one.
+
+   Ant
+   I created a couple bug files with only a couple of commands and 
+   used ccassert to make sure the amount of food it is holding and 
+   energy is being changed properly. I also used cassert to make
+   sure that if it was on a square with an ant from another colony,
+   both ants energy would be changed.
+
+   Baby Grasshopper
+   I ran fields with a babygrasshopper and another object and used cassert
+   to make sure that the interactions between the baby grasshopper and the
+   other object would modify certain properties properly. I also had fields
+   that contained only a baby grasshopper and made sure that it dies when it
+   has 1500 ticks left.
+
+   Adult grasshopper
+   I did exactly the same thing as I did with baby grasshopper. I ran fields
+   with an adult grasshopper and another object and used cassert to test
+   their interactions. I also had fields with to adult grasshoppers and
+   had them keep biting each other over and over again until one of them
+   dies.
